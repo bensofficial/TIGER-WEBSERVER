@@ -6,4 +6,3 @@ _How do you managed to solve it? What changed you?_
 
 ## What still is to do
 - Add a list of what is still to make on your code better.
-
