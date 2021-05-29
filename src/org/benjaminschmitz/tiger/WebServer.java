@@ -20,7 +20,8 @@ package org.benjaminschmitz.tiger;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import org.benjaminschmitz.tiger.threadpool.Threadpool;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * WebServer class for the main server application.
@@ -83,8 +84,7 @@ public class WebServer {
 			throw new RuntimeException("Couldn't bind on port " + PORT);
 		}
 
-		Threadpool pool = new Threadpool(THREADS);
-
+		ExecutorService pool = Executors.newFixedThreadPool(THREADS);
 		while (!Thread.currentThread().isInterrupted()) {
 			Socket sock;
 			try {
@@ -96,11 +96,8 @@ public class WebServer {
 			final Socket s = sock;
 
 			if (s != null) {
-				try {
-					pool.submit(() -> HandleConnection.handleConnection(LOGGER, s, GENERATOR, FOLDER));
-				} catch (InterruptedException e) {
-					LOGGER.warning("Error handling connection with " + s.getInetAddress());
-				}
+				pool.submit(() -> HandleConnection.handleConnection(LOGGER, s, GENERATOR, FOLDER));
+
 			}
 		}
 
