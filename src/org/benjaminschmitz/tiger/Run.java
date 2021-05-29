@@ -49,7 +49,6 @@ public class Run {
 		String host;
 
 		PropertyReader properties;
-
 		try {
 			properties = new PropertyReader(CONFIGFILE);
 		} catch (IOException e) {
