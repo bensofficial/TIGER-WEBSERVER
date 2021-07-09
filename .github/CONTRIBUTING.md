@@ -1,6 +1,6 @@
 # Contributing
 It's very appreciated to develop own code and to help this code getting better.
-###Style Guide
+### Style Guide
 - Use good data types
 - Name the variables and methods useful
 - Tabs are 4 spaces
@@ -29,5 +29,5 @@ public static void main(String[] args)
         System.out.println("Hello World!");
 }
 ```
-###Behavior
+### Behavior
 Please be friendly and value the work others did. More information in the CODE_OF_CONDUCT.md file.
